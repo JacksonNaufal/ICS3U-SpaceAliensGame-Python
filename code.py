@@ -4,9 +4,8 @@
 # Created on: March 2022
 # This is a "Hello, World! program, tested for space aliens.
 
-import ugame
 import stage
-
+import ugame
 
 def game_scene():
     # this function is going to pop up on the main game_scene
