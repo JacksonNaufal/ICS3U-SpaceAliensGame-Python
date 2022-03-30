@@ -18,7 +18,7 @@ def game_scene():
 
     # repeat forever, game loop
     while True:
-        pass # just a placeholder for now
+        pass  # just a placeholder for now
 
 if __name__ == "__main__":
     game_scene()
