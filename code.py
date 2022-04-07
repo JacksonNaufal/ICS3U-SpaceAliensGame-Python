@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 # Created by: Jackson Naufal
@@ -20,7 +19,7 @@ def game_scene():
     # sets the background to image 0
     # and the size (10x8 titels of the size 16x16)
     background = stage.Grid(image_bank_background, 10, 8)
-    
+
     ship = stage.Sprite(image_bank_sprites, 5, 75, 66)
 
     # create a stage
@@ -59,6 +58,7 @@ def game_scene():
         # redraw Sprites
         game.render_sprites([ship])
         game.tick()
+
 
 if __name__ == "__main__":
     game_scene()
