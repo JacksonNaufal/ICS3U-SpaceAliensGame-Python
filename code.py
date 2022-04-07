@@ -17,7 +17,7 @@ def game_scene():
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
     image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
 
-    # sets the bacgrkound to image 0 
+    # sets the background to image 0
     # and the size (10x8 titels of the size 16x16)
     background = stage.Grid(image_bank_background, 10, 8)
     
