@@ -38,7 +38,8 @@ def game_scene():
     while True:
         # get user input
         keys = ugame.buttons.get_pressed()
-        
+
+
         if keys & ugame.K_X:
             print("A")
         if keys & ugame.K_O:
@@ -48,19 +49,20 @@ def game_scene():
         if keys & ugame.K_SELECT:
             print("Select")
         if keys & ugame.K_LEFT:
-            ship.move(ship.x -1, ship.y)
+            ship.move(ship.x - 1, ship.y)
         if keys & ugame.K_RIGHT:
             ship.move(ship.x + 1, ship.y)
         if keys & ugame.K_UP:
-            ship.move(ship.x, ship.y -1)
+            ship.move(ship.x, ship.y - 1)
         if keys & ugame.K_DOWN:
             ship.move(ship.x, ship.y + 1)
-        
+
         # update game logic
-        
+
+
         # redraw Sprites
         game.render_sprites([ship])
-        game.tick ()
+        game.tick()
     
 
 if __name__ == "__main__":
