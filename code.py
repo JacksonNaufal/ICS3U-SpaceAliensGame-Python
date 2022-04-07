@@ -15,14 +15,13 @@ def game_scene():
 
     # image banks for CircuitPython
     image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
-    image_bank_sprites = stage.Bank.from_bmp16 ("space_aliens.bmp")
+    image_bank_sprites = stage.Bank.from_bmp16("space_aliens.bmp")
     
     # sets the bacgrkound to image 0 
     # and the size (10x8 titels of the size 16x16)
     background = stage.Grid(image_bank_background, 10, 8)
     
     ship = stage.Sprite(image_bank_sprites, 5, 75, 66)
-
 
     # create a stage
     # set frame rate to 60 fps
@@ -33,12 +32,10 @@ def game_scene():
     # most likely will only render background once per game scnece
     game.render_block()
 
-
     # repeat forever, game loop
     while True:
         # get user input
         keys = ugame.buttons.get_pressed()
-
 
         if keys & ugame.K_X:
             print("A")
@@ -58,7 +55,6 @@ def game_scene():
             ship.move(ship.x, ship.y + 1)
 
         # update game logic
-
 
         # redraw Sprites
         game.render_sprites([ship])
