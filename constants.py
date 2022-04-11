@@ -14,7 +14,3 @@ SCREEN_SIZE = 16
 TOTAL_NUMBER_ALIENS = 5
 FPS = 60
 SPRITE_MOVEMENT_SPEED = 1
-
-
-if __name__ == "__main__":
-    game_scene()
