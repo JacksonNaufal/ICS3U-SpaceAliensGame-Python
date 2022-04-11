@@ -2,11 +2,13 @@
 
 # Created by: Jackson Naufal
 # Created on: March 2022
-# This is a "Hello, World! program, tested for space aliens.
+# This is a space aliens game.
 
 
 import stage
 import ugame
+
+import constants
 
 
 def game_scene():
@@ -20,7 +22,9 @@ def game_scene():
     # and the size (10x8 titels of the size 16x16)
     background = stage.Grid(image_bank_background, 10, 8)
 
-    ship = stage.Sprite(image_bank_sprites, 5, 75, 66)
+    ship = stage.Sprite(
+        image_bank_sprites, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE)
+    )
 
     # create a stage
     # set frame rate to 60 fps
@@ -44,14 +48,22 @@ def game_scene():
             print("Start")
         if keys & ugame.K_SELECT:
             print("Select")
-        if keys & ugame.K_LEFT:
-            ship.move(ship.x - 1, ship.y)
-        if keys & ugame.K_RIGHT:
-            ship.move(ship.x + 1, ship.y)
-        if keys & ugame.K_UP:
-            ship.move(ship.x, ship.y - 1)
-        if keys & ugame.K_DOWN:
-            ship.move(ship.x, ship.y + 1)
+        if keys & ugame.K_LEFT != 0:
+            if ship.x < (constants.SCREEN_X - constants.SPRITE_SIZE):
+                ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
+            else:
+                ship.move((constants.SCREEN_X - constants.SPRITE_SIZE), ship.y)
+
+        if keys & ugame.K_RIGHT != 0:
+            if ship.x < (constants.SCREEN_X - constants.SPRITE_SIZE):
+                ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
+            else:
+                ship.move((constants.SCREEN_X - constants.SPRITE_SIZE), ship.y)
+
+        if keys & ugame.K_UP != 0:
+            pass
+        if keys & ugame.K_DOWN != 0:
+            pass
 
         # update game logic
 
