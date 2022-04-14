@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
 
 # Created by: Jackson Naufal
 # Created on: March 2022
