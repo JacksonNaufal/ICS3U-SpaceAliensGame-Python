@@ -15,7 +15,7 @@ def menu_scene():
     # this function is the main game game_scene
 
     # image banks for CircuitPython
-    image_bank_background = stage.Bank.from_bmp16("space_aliens_background.bmp")
+    image_bank_mt_background = stage.Bank.from_bmp16("mt_game_studio.bmp")
     
     
     # add text objects
@@ -34,13 +34,12 @@ def menu_scene():
     text.append(text2)
     # sets the background to image 0
     # and the size (10x8 titels of the size 16x16)
-    background = stage.Grid(image_bank_background, 10, 8)
-
-
+    background = stage.Grid(image_bank_mt_background, constants.SCREEN_X,
+                            constants.SCREEN_Y)
 
     # create a stage
     # set frame rate to 60 fps
-    game = stage.Stage(ugame.display, 60)
+    game = stage.Stage(ugame.display, constants.FPS)
     # set the layter of all sprites to show up in order
     game.layers = text + [background]
     # render all sprites
@@ -52,7 +51,7 @@ def menu_scene():
         # get user input
         keys = ugame.buttons.get_pressed()
 
-        if keys & ugame.K_START:
+        if keys & ugame.K_START != 0:
             game_scene()
 
         #redraw Sprites
