@@ -4,12 +4,81 @@
 # Created on: March 2022
 # This is a space aliens game.
 
-
+import random
 import stage
+import time
 import ugame
 
 import constants
 
+
+def splash_scene():
+    # this function is the splash_scene
+    
+    # get sound ready
+    coin_sound = open("coin.wav", 'rb')
+    sound = ugame.audio
+    sound.stop()
+    sound.mute(False)
+    sound.play(coin_sound)
+
+    # image banks for CircuitPython
+    image_bank_mt_background = stage.Bank.from_bmp16("mt_game_studio.bmp")
+    
+    
+    # sets the background to image 0
+    # and the size (10x8 titels of the size 16x16)
+    background = stage.Grid(image_bank_mt_background, constants.SCREEN_X,
+                            constants.SCREEN_Y)
+    
+    
+     # used this program to split the image into tile: 
+    #   https://ezgif.com/sprite-cutter/ezgif-5-818cdbcc3f66.png
+    background.tile(2, 2, 0)  # blank white
+    background.tile(3, 2, 1)
+    background.tile(4, 2, 2)
+    background.tile(5, 2, 3)
+    background.tile(6, 2, 4)
+    background.tile(7, 2, 0)  # blank white
+
+    background.tile(2, 3, 0)  # blank white
+    background.tile(3, 3, 5)
+    background.tile(4, 3, 6)
+    background.tile(5, 3, 7)
+    background.tile(6, 3, 8)
+    background.tile(7, 3, 0)  # blank white
+
+    background.tile(2, 4, 0)  # blank white
+    background.tile(3, 4, 9)
+    background.tile(4, 4, 10)
+    background.tile(5, 4, 11)
+    background.tile(6, 4, 12)
+    background.tile(7, 4, 0)  # blank white
+
+    background.tile(2, 5, 0)  # blank white
+    background.tile(3, 5, 0)
+    background.tile(4, 5, 13)
+    background.tile(5, 5, 14)
+    background.tile(6, 5, 0)
+    background.tile(7, 5, 0)  # blank white
+
+    # create a stage
+    # set frame rate to 60 fps
+    game = stage.Stage(ugame.display, constants.FPS)
+    # set the layter of all sprites to show up in order
+    game.layers = [background]
+    # render all sprites
+    # most likely will only render background once per game scnece
+    game.render_block()
+
+    # repeat forever, game loop
+    while True:
+        # wait for 2 seconds
+        time.sleep(2.0)
+        menu_scene()
+
+        #redraw Sprites
+        game.tick()
 
 def menu_scene():
     # this function is the main game game_scene
@@ -57,6 +126,7 @@ def menu_scene():
         #redraw Sprites
         game.tick()
 
+
 def game_scene():
     # this function is the main game game_scene
 
@@ -77,7 +147,13 @@ def game_scene():
     sound.mute(False)
     # sets the background to image 0
     # and the size (10x8 titels of the size 16x16)
-    background = stage.Grid(image_bank_background, 10, 8)
+    background = stage.Grid(image_bank_background, constants.SCREEN_X, 
+                            constants.SCREEN_Y)
+    
+    for x_location in range(constants.SCREEN_GRID_X):
+        for y_location in range(constants.SCREEN_GRID_Y):
+            tile_picked = random.radiant(1, 3)
+            background.tile(x_location, y_location, tile_picked)
 
     ship = stage.Sprite(image_bank_sprites, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE))
     
@@ -143,4 +219,4 @@ def game_scene():
         game.tick()
 
 if __name__ == "__main__":
-    menu_scene()
+    splash_scene()
