@@ -152,7 +152,7 @@ def game_scene():
     
     for x_location in range(constants.SCREEN_GRID_X):
         for y_location in range(constants.SCREEN_GRID_Y):
-            tile_picked = random.radiant(1, 3)
+            tile_picked = random.randint(1, 3)
             background.tile(x_location, y_location, tile_picked)
 
     ship = stage.Sprite(image_bank_sprites, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE))
