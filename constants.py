@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 
 # Created by: Jackson Naufal
 # Created on: March 2022
@@ -21,3 +22,6 @@ button_state = {
     "button_still_pressed": "still pressed",
     "button_released": "released"
 }
+# new pallet for filled text
+RED_PALETTE = (b'\xff\xff\x00\x22\xcey\x22\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+                b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff')
