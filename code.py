@@ -133,6 +133,12 @@ def game_scene():
     # for score
     score = 0
     
+    score_text = stage.Text(width=29, height=14)
+    score_text.clear()
+    score_text.cursor(0,0)
+    score_text.move(1,1)
+    score_text.text("Score: {0}".format(score))
+    
     def show_alien():
         # this function takes an alein from off screen and moves it on screen
         for alien_number in range(len(aliens)):
@@ -191,7 +197,7 @@ constants.SPRITE_SIZE),
     # set frame rate to 60 fps
     game = stage.Stage(ugame.display, 60)
     # set the layter of all sprites to show up in order
-    game.layers = lasers + [ship] + aliens + [background]
+    game.layers = [score_text] + lasers + [ship] + aliens + [background]
     # render all sprites
     # most likely will only render background once per game scnece
     game.render_block()
@@ -267,6 +273,13 @@ constants.SPRITE_SIZE),
                     aliens[alien_number].move(constants.OFF_SCREEN_X,
                                                 constants.OFF_SCREEN_Y)
                     show_alien()
+                    score -= 1
+                    if score < 0:
+                        score = 0
+                    score_text.clear()
+                    score_text.cursor(0,0)
+                    score_text.move(1,1)
+                    score_text.text("Score: {0}".format(score))
 
         # each frame chack if any of the lasers are touching any of the aliens 
         for laser_number in range(len(lasers)):
@@ -285,10 +298,14 @@ constants.SPRITE_SIZE),
                             show_alien()
                             show_alien()
                             score = score + 1
+                            score_text.clear()
+                            score_text.cursor(0,0)
+                            score_text.move(1,1)
+                            score_text.text("Score: {0}".format(score))
                                             
         # redraw Sprites
         game.render_sprites(lasers + [ship] + aliens)
-        game.tick()
+        game.tick() # wait until refresh rate finishes
 
 if __name__ == "__main__":
     splash_scene()
