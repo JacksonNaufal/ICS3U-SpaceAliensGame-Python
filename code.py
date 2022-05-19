@@ -4,13 +4,13 @@
 # Created on: March 2022
 # This is a space aliens game.
 
+import constants
 import random
 import stage
 import supervisor
 import time
 import ugame
 
-import constants
 
 
 def splash_scene():
